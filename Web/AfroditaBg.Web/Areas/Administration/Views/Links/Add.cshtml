@@ -1,0 +1,55 @@
+﻿@using AfroditaBg.Common
+@inject IViewLocalizer Localizer
+@{
+    this.ViewData["Title"] = "Admin dashboard";
+}
+
+@model AfroditaBg.Web.ViewModels.Administration.Links.LinkInputViewModel
+<form enctype="multipart/form-data" class="ftco-animate" method="post">
+    <div class="form-row">
+        <div class="form-group col-12">
+            <input asp-for="BulgarianTitle" class="form-control" placeholder=@Localizer["Заглавие на Български*"]>
+            <span asp-validation-for="BulgarianTitle" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-12">
+            <input asp-for="EnglishTitle" class="form-control" placeholder=@Localizer["Заглавие на Английски*"]>
+            <span asp-validation-for="EnglishTitle" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-12">
+            <textarea asp-for="BulgarianDescription" rows="4" class="form-control" placeholder=@Localizer["Описание на Български*"]></textarea>
+            <span asp-validation-for="BulgarianDescription" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-12">
+            <textarea asp-for="EnglishDescription" rows="4" class="form-control" placeholder=@Localizer["Описание на Английски*"]></textarea>
+            <span asp-validation-for="EnglishDescription" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-12">
+            <input asp-for="Url" class="form-control" placeholder=@Localizer["Линк във формат https://link.com*"]>
+            <span asp-validation-for="Url" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-auto">
+            <label asp-for="Image">Избери заглавна снимка</label>
+            <input asp-for="Image" class="form-control-file">
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col text-center">
+            <input type="submit" value="@Localizer["Добави линк"]" class="btn btn-primary py-3 px-5">
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

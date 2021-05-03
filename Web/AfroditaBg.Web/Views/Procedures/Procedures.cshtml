@@ -1,0 +1,31 @@
+﻿@using AfroditaBg.Common
+@model AfroditaBg.Web.ViewModels.Procedures.ProcedureViewModel
+@inject IViewLocalizer Localizer
+@{
+    this.ViewData["Title"] = Localizer[Model.BulgarianName];
+    this.ViewData["Procedure"] = "active";
+}
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row d-flex">
+            <div class="col-md-6 pl-md-5 ftco-animate">
+                <h2 class="mb-4">@Localizer[Model.BulgarianName]</h2>
+                <p>@Localizer[Model.BulgarianDescription]</p>
+            </div>
+            <div class="col-md-6 d-flex ftco-animate">
+                <div class="img img-about align-self-stretch" style="background-image: url(@Model.ImagePath); width: 100%;"></div>
+            </div>
+        </div>
+
+        @if (User.IsInRole(GlobalConstants.AdministratorRoleName))
+        {
+            <div class="row d-flex justify-content-center mt-2">
+                <form class="d-flex ftco-animate" asp-area="Administration" asp-controller="Procedures" asp-action="Remove" method="post" onsubmit="return confirm('Сигурни ли сте че искате да изтриете @Model.BulgarianName?');">
+                    <input type="submit" value="@Localizer["Премахни"]" class="btn btn-danger btn-sm">
+                    <input type="hidden" name="id" value="@Model.Id" />
+                </form>
+            </div>
+        }
+    </div>
+</section>

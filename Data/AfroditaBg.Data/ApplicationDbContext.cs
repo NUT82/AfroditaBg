@@ -26,6 +26,14 @@
 
         public DbSet<Setting> Settings { get; set; }
 
+        public DbSet<Image> Images { get; set; }
+
+        public DbSet<Procedure> Procedures { get; set; }
+
+        public DbSet<Link> Links { get; set; }
+
+        public DbSet<Tag> Tags { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)

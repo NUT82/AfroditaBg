@@ -1,0 +1,7 @@
+﻿@model AfroditaBg.Web.ViewModels.Procedures.AllProceduresNamesComponentViewModel
+@inject IViewLocalizer Localizer
+
+@foreach (var procedure in this.Model.Procedures)
+{
+    <li><a asp-area="" asp-controller="Procedures" asp-action="@procedure.EnglishName" class="py-2 d-block">@Localizer[procedure.BulgarianName]</a></li>
+}

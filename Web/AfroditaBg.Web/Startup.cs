@@ -1,5 +1,6 @@
 ﻿namespace AfroditaBg.Web
 {
+    using System.Globalization;
     using System.Reflection;
 
     using AfroditaBg.Data;
@@ -16,11 +17,14 @@
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Localization;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Razor;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using Microsoft.Extensions.Options;
 
     public class Startup
     {
@@ -36,6 +40,12 @@
         {
             services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+            services.AddMvc()
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                .AddDataAnnotationsLocalization();
 
             services.AddDefaultIdentity<ApplicationUser>(IdentityOptionsProvider.GetIdentityOptions)
                 .AddRoles<ApplicationRole>().AddEntityFrameworkStores<ApplicationDbContext>();
@@ -65,6 +75,25 @@
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
+            services.AddTransient<IProceduresService, ProceduresService>();
+            services.AddTransient<ILinksService, LinksService>();
+            services.AddTransient<IImagesService, ImagesService>();
+            services.AddTransient<ITagsService, TagsService>();
+
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var supportedCultures = new[]
+                {
+                    new CultureInfo("en-US"),
+                    new CultureInfo("bg-BG"),
+                };
+
+                options.DefaultRequestCulture = new RequestCulture(culture: "bg-BG", uiCulture: "bg-BG");
+
+                options.SupportedCultures = supportedCultures;
+
+                options.SupportedUICultures = supportedCultures;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -95,6 +124,9 @@
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            var locOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
+            app.UseRequestLocalization(locOptions.Value);
+
             app.UseRouting();
 
             app.UseAuthentication();
@@ -102,11 +134,13 @@
 
             app.UseEndpoints(
                 endpoints =>
-                    {
-                        endpoints.MapControllerRoute("areaRoute", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-                        endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
-                        endpoints.MapRazorPages();
-                    });
+                {
+                    endpoints.MapControllerRoute("areaRoute", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                    endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                    endpoints.MapControllerRoute("procedures", "Procedures/{procedure=all}", defaults: new { controller = "Procedures", action = "Procedures" });
+                    endpoints.MapControllerRoute("gallery", "Gallery/{tag?}/{page?}", defaults: new { controller = "Gallery", action = "Index" });
+                    endpoints.MapRazorPages();
+                });
         }
     }
 }

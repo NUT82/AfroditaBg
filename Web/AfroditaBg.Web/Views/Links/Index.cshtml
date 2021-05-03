@@ -1,0 +1,56 @@
+﻿@using AfroditaBg.Common
+@model IEnumerable<AfroditaBg.Web.ViewModels.Links.LinkViewModel>
+@inject IViewLocalizer Localizer
+@{
+    this.ViewData["Title"] = @Localizer["Връзки"];
+    this.ViewData["Links"] = "active";
+}
+
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row">
+            @foreach (var link in Model)
+            {
+            <div class="col-lg-3 d-flex mb-sm-4 ftco-animate justify-content-center">
+                
+                <div class="links">
+                    @if (User.IsInRole(GlobalConstants.AdministratorRoleName))
+                    {
+                    <form asp-area="Administration" asp-controller="Links" asp-action="Remove" method="post" onsubmit="return confirm('Сигурни ли сте че искате да изтриете @link.BulgarianTitle?');">
+                        <div class="text-right">
+                            <input type="submit" value="@Localizer["Премахни"]" class="btn btn-danger btn-sm">
+                        </div>
+                        <input type="hidden" name="id" value="@link.Id" />
+                    </form>
+                    }
+                    <div class="img mb-4" style="background-image: url(@link.ImagePath);"></div>
+                    <div class="info text-center">
+                        <h3><a href="@link.Url" target="_blank">@Localizer[link.BulgarianTitle]</a></h3>
+                        <div class="text">
+                            <p>@Localizer[link.BulgarianDescription]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+            @if (User.IsInRole(GlobalConstants.AdministratorRoleName))
+            {
+                <div class="col-lg-3 d-flex mb-sm-4 ftco-animate justify-content-center">
+                    <div class="links">
+                        <a asp-area="Administration" asp-controller="Links" asp-action="Add">
+                            <div class="img mb-4" style="background-image: url(/images/plus-sign.png);"></div>
+                            <div class="info text-center">
+                                <h3>
+                                    @Localizer["Добави нов линк"]
+                                </h3>
+                                <div class="text">
+                                    <p>@Localizer["Натиснете тук за да добавите нов линк"]</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

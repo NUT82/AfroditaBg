@@ -1,0 +1,56 @@
+﻿@using AfroditaBg.Common
+@inject IViewLocalizer Localizer
+@{
+    this.ViewData["Title"] = "Admin dashboard";
+}
+
+@model AfroditaBg.Web.ViewModels.Administration.Procedures.ProcedureInputViewModel
+<form enctype="multipart/form-data" class="ftco-animate" method="post">
+    <div class="form-row">
+        <div class="form-group col-12">
+            <input asp-for="BulgarianName" class="form-control" placeholder=@Localizer["Име на процедурата на Български*"]>
+            <span asp-validation-for="BulgarianName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-12">
+            <input asp-for="EnglishName" class="form-control" placeholder=@Localizer["Име на процедурата на Английски*"]>
+            <span asp-validation-for="EnglishName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-12">
+            <textarea asp-for="BulgarianDescription" rows="4" class="form-control" placeholder=@Localizer["Описание на Български*"]></textarea>
+            <span asp-validation-for="BulgarianDescription" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-12">
+            <textarea asp-for="EnglishDescription" rows="4" class="form-control" placeholder=@Localizer["Описание на Английски*"]></textarea>
+            <span asp-validation-for="EnglishDescription" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-auto">
+            <label asp-for="ThumbnailImage">Избери заглавна снимка</label>
+            <input asp-for="ThumbnailImage" class="form-control-file">
+            <span asp-validation-for="ThumbnailImage" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-auto">
+            <label asp-for="Image">Избери снимка за описанието</label>
+            <input asp-for="Image" class="form-control-file">
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col text-center">
+            <input type="submit" value="@Localizer["Добави процедура"]" class="btn btn-primary py-3 px-5">
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

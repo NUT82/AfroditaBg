@@ -1,0 +1,79 @@
+﻿@using AfroditaBg.Common
+@inject IViewLocalizer Localizer
+@model AfroditaBg.Web.ViewModels.Gallery.GalleryViewModel
+@{
+    this.ViewData["Title"] = @Localizer["Галерия"];
+    this.ViewData["Gallery"] = "active";
+}
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-7 heading-section text-center ftco-animate">
+                @if (User.IsInRole(GlobalConstants.AdministratorRoleName))
+                {
+                    <a asp-area="Administration" asp-controller="Gallery" asp-action="Add"><h2 class="mb-4">@Localizer["Добави нова снимка"]</h2></a>
+                }
+                else
+                {
+                    <h2 class="mb-4">@Localizer["Тук може да разгледате моята работа"]</h2>
+                }
+                <p class="work-category">
+                    <span class="px-2"><a href="#" class="active">All</a></span>
+                    <span class="px-2"><a href="#">Make Up</a></span>
+                    <span class="px-2"><a href="#">Massage</a></span>
+                    <span class="px-2"><a href="#">Facial</a></span>
+                    <span class="px-2"><a href="#">Spa</a></span>
+                    <span class="px-2"><a href="#">Hair</a></span>
+                    <span class="px-2"><a href="#">Nail</a></span>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var image in Model.Images)
+            {
+                <div class="col-md-4 ftco-animate pb-1">
+                    @if (User.IsInRole(GlobalConstants.AdministratorRoleName))
+                    {
+                        <form asp-area="Administration" asp-controller="Gallery" asp-action="Remove" method="post" onsubmit="return confirm('Сигурни ли сте че искате да изтриете тази снимка?');">
+                            <div class="text-right mt-3">
+                                <input type="submit" value="X" class="btn btn-danger btn-sm">
+                            </div>
+                            <input type="hidden" name="id" value="@image.Id" />
+                            <input type="hidden" name="currPage" value="@Model.Page.CurrPage" />
+                        </form>
+                    }
+                    <div class="work-entry">
+                        <img src="@image.ImagePath" class="img-fluid" alt="@image.Description">
+                        <div class="info d-flex align-items-center">
+                            <div>
+                                <h3>@image.ModelName</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="row mt-5">
+            <div class="col text-center">
+                <div class="block-27">
+                    <ul>
+                        <li><a @(Model.Page.HasPrevPage ? ($"href=/Gallery?page={Model.Page.CurrPage - 1}") : null)>&lt;</a></li>
+                        @for (int i = Math.Max(Math.Min(Model.Page.TotalPages, Math.Max(Model.Page.CurrPage - 2, 1) + 4) - 4, 1); i <= Math.Min(Model.Page.TotalPages, Math.Max(Model.Page.CurrPage - 2, 1) + 4); i++)
+                        {
+                            if (Model.Page.CurrPage == i)
+                            {
+                                <li class=active><span>@Model.Page.CurrPage</span></li>
+                            }
+                            else
+                            {
+                                <li><a href="/Gallery?page=@i">@i</a></li>
+                            }
+                        }
+                        <li><a @(Model.Page.HasNextPage ? ($"href=/Gallery?page={Model.Page.CurrPage + 1}") : null)>&gt;</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

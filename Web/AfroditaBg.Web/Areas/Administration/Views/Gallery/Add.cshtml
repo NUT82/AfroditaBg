@@ -1,0 +1,55 @@
+﻿@using AfroditaBg.Common
+@inject IViewLocalizer Localizer
+@{
+    this.ViewData["Title"] = "Admin dashboard";
+}
+
+@model AfroditaBg.Web.ViewModels.Administration.Gallery.GalleryInputViewModel
+<form enctype="multipart/form-data" class="ftco-animate" method="post">
+    <div class="form-row">
+        <div class="form-group col-auto">
+            <label asp-for="Image">Избери снимка</label>
+            <input asp-for="Image" class="form-control-file">
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-12">
+            <input asp-for="BulgarianTag" class="form-control" placeholder=@Localizer["Тагове на Български (раздели със запетая, ако са няколко)"]>
+            <span asp-validation-for="BulgarianTag" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-12">
+            <input asp-for="EnglishTag" class="form-control" placeholder=@Localizer["Тагове на Английски (раздели със запетая, ако са няколко)"]>
+            <span asp-validation-for="EnglishTag" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-12">
+            <input asp-for="BulgarianDescription" class="form-control" placeholder=@Localizer["Кратко описание на Български"]>
+            <span asp-validation-for="BulgarianDescription" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-12">
+            <input asp-for="EnglishDescription" class="form-control" placeholder=@Localizer["Кратко описание на Английски"]>
+            <span asp-validation-for="EnglishDescription" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-12">
+            <input asp-for="ModelName" class="form-control" placeholder=@Localizer["Име на модела"]>
+            <span asp-validation-for="ModelName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col text-center">
+            <input type="submit" value="@Localizer["Добави снимка"]" class="btn btn-primary py-3 px-5">
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

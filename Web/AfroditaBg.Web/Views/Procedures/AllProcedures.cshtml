@@ -1,0 +1,56 @@
+﻿@using AfroditaBg.Common
+@model IEnumerable<AfroditaBg.Web.ViewModels.Procedures.AllProceduresViewModel>
+@inject IViewLocalizer Localizer
+@{
+    this.ViewData["Title"] = Localizer["Процедури"];
+    this.ViewData["Procedure"] = "active";
+}
+
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row">
+            @foreach (var procedure in Model)
+            {
+                <div class="col-lg-4 d-flex mb-sm-2 ftco-animate justify-content-center">
+
+                    <div class="links procedures">
+                        @if (User.IsInRole(GlobalConstants.AdministratorRoleName))
+                        {
+                            <form asp-area="Administration" asp-controller="Procedures" asp-action="Remove" method="post" onsubmit="return confirm('Сигурни ли сте че искате да изтриете @procedure.BulgarianName?');">
+                                <div class="text-right">
+                                    <input type="submit" value="@Localizer["Премахни"]" class="btn btn-danger btn-sm">
+                                </div>
+                                <input type="hidden" name="id" value="@procedure.Id" />
+                            </form>
+                        }
+                        <div class="img mb-2" style="background-image: url(@procedure.ThumbnailImagePath);"></div>
+                        <div class="info text-center">
+                            <h3><a asp-area="" asp-controller="Procedures" asp-action="@procedure.EnglishName">@Localizer[procedure.BulgarianName]</a></h3>
+                            <div class="text">
+                                <p>@Localizer[procedure.BulgarianDescription]</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            @if (User.IsInRole(GlobalConstants.AdministratorRoleName))
+            {
+                <div class="col-lg-4 d-flex mb-sm-2 ftco-animate justify-content-center">
+                    <div class="links procedures">
+                        <a asp-area="Administration" asp-controller="Procedures" asp-action="Add">
+                            <div class="img mb-2" style="background-image: url(/images/plus-sign.png);"></div>
+                            <div class="info text-center">
+                                <h3>
+                                    @Localizer["Добави нова процедура"]
+                                </h3>
+                                <div class="text">
+                                    <p>@Localizer["Натиснете тук за да добавите нова процедура"]</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

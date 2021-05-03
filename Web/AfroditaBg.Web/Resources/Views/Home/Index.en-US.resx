@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Веселка Петрова" xml:space="preserve">
+    <value>Veselka Petrova</value>
+  </data>
+  <data name="Гримирането е изкуство, което ни дава възможност да видим себе си в друга светлина.Не е нужно да бъдете като всички: експериментирайте, докато намерите своя стил." xml:space="preserve">
+    <value>Makeup is an art that allows us to see ourselves in a different light. You don't have to be like everyone else: experiment until you find your style.</value>
+  </data>
+  <data name="Гримът трябва да подчертава индивидуалността на лицето. Изкуството на гримирането Ви предлага неограничени възможности и за няколко минути може да Ви превърне от съседско момиче в естрадна дива.Не е нужно да възприемате съветите от модните списания буквално, тяхната цел е да ви вдъхновят.Опитайте се да намерите такъв стил на гримирането, който Ви прави и Ви кара да се чувствате красиви." xml:space="preserve">
+    <value>Makeup should emphasize the individuality of the face. The art of make-up offers you unlimited possibilities and in a few minutes can turn you from a girl next door into a pop diva. You do not need to take the advice from fashion magazines literally, their purpose is to inspire you. Try to find a make-up style that It makes you and makes you feel beautiful.</value>
+  </data>
+  <data name="Гримьор" xml:space="preserve">
+    <value>Makeup artist</value>
+  </data>
+  <data name="Красиви за всеки повод" xml:space="preserve">
+    <value>Beautiful for any occasion</value>
+  </data>
+  <data name="Красотата - това не са дългите коси, красивите крака, загорялата кожа или идеалните зъби. Красотата - това е лицето, което е плакало, а сега се усмихва, красотата - това е белега на коляното, останал от падане в детството, красотата е в тъмните кръгове под очите, когато любовта не ти позволява да заспиш, красотата - това е изражението на лицето, когато будилникът звъни, тя е размазаният грим, който се стича по лицето ти след душа, това е смеха, когато се шегуваш и ти си единствения, който е разбрал шегата. Красотата е в погледа ти, когато виждаш Него, когато плачеш над страховете си, красотата - това са бръчките, които идват с годините. Красотата - това е начина, по който общуваме с вътрешното си Аз, и начина, по който го проявяваме навън. Красотата - това са знаците в живота, всички удари и грижи, които поемаме. Красотата - това е да си позволиш да живееш, да бъдеш истински жив!" xml:space="preserve">
+    <value>Beauty - these are not long hair, beautiful legs, tanned skin or perfect teeth. Beauty - this is the face that cried and now smiles, beauty - this is the scar on the knee left over from falling in childhood, beauty is in the dark circles under the eyes when love does not allow you to sleep, beauty - this is the expression on the face when the alarm clock rings, it's the smudged makeup that runs down your face after a shower, it's the laughter when you're joking and you're the only one who understands the joke. Beauty is in your eyes when you see Him, when you cry over your fears, beauty - these are the wrinkles that come with age. Beauty is the way we communicate with our inner self and the way we manifest it outside. Beauty - these are the signs in life, all the blows and care we take. The beauty is to allow yourself to live, to be truly alive!</value>
+  </data>
+  <data name="Модните тенденции трябва да ни вдъхновяват и да ни служат за ориентир, без да ги възприемаме буквално..." xml:space="preserve">
+    <value>Fashion trends should inspire us and serve as a guide, without taking them literally ...</value>
+  </data>
+  <data name="Най-важното нещо, което всеки гримьор знае, е че не трябва да се копира грим от снимка, защото той никога няма да е еднакъв. Всяко лице има свои черти, най-красивите от които трябва да се подчертаят, а и гримът трябва да съответства с излъчването на човек." xml:space="preserve">
+    <value>The most important thing that every makeup artist knows is that you should not copy makeup from a photo, because it will never be the same. Each face has its own features, the most beautiful of which should be emphasized, and makeup should match the radiance of a person.</value>
+  </data>
+  <data name="Начало" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Професионален гримьор и козметик" xml:space="preserve">
+    <value>Professional makeup artist</value>
+  </data>
+</root>
