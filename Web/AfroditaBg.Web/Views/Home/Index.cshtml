@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row d-flex">
             <div class="col-md-6 d-flex ftco-animate">
-                <div class="img img-about align-self-stretch" style="background-image: url(@Model[0].ImagePath); width: 100%;"></div>
+                <div class="img img-about align-self-stretch" style="background-image: url(@Model.FirstOrDefault()?.ImagePath); width: 100%;"></div>
             </div>
             <div class="col-md-6 pl-md-5 ftco-animate">
                 <h2 class="mb-4">@Localizer["Красиви за всеки повод"]</h2>
@@ -24,7 +24,7 @@
                 <p>"@Localizer["Модните тенденции трябва да ни вдъхновяват и да ни служат за ориентир, без да ги възприемаме буквално..."]"</p>
             </div>
             <div class="col-md-6 d-flex ftco-animate">
-                <div class="img img-about align-self-stretch" style="background-image: url(@Model[1].ImagePath); width: 100%;"></div>
+                <div class="img img-about align-self-stretch" style="background-image: url(@Model.LastOrDefault()?.ImagePath); width: 100%;"></div>
             </div>
         </div>
     </div>
