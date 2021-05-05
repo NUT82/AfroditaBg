@@ -1,0 +1,7 @@
+﻿@model AfroditaBg.Web.ViewModels.Gallery.AllGalleryTagsComponentViewModel
+@inject IViewLocalizer Localizer
+
+@foreach (var tags in this.Model.GalleryTags)
+{
+    <li><a href="/Gallery?page=1&tag=@tags.BulgarianName" class="py-2 d-block text-capitalize">@Localizer[tags.BulgarianName]</a></li>
+}
