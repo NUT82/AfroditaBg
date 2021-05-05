@@ -61,16 +61,18 @@
             var imageId = await this.AddNewImageAsync(viewModel.Image, $"{this.environment.ContentRootPath}/wwwroot/images/gallery/");
             var image = this.imageRepository.All().Where(x => x.Id == imageId).FirstOrDefault();
 
-            var bulgarianTags = viewModel.BulgarianTag?.Split(",", StringSplitOptions.RemoveEmptyEntries).Select(x => x.Trim()).ToList();
-            var englishTags = viewModel.EnglishTag?.Split(",", StringSplitOptions.RemoveEmptyEntries).Select(x => x.Trim()).ToList();
-
-            if (bulgarianTags != null)
+            if (viewModel.SelectTag == "new")
             {
-                for (int i = 0; i < bulgarianTags.Count; i++)
+                if (viewModel.NewTag != null)
                 {
-                    var tag = await this.tagsService.AddNewTagAsync(bulgarianTags[i], englishTags[i]);
+                    var tag = await this.tagsService.AddNewTagAsync(viewModel.NewTag, viewModel.NewTag);
                     image.Tags.Add(tag);
                 }
+            }
+            else
+            {
+                var tag = new Tag { BulgarianName = viewModel.SelectTag, EnglishName = viewModel.SelectTag };
+                image.Tags.Add(tag);
             }
 
             image.Description = viewModel.BulgarianDescription;

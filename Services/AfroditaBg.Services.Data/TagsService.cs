@@ -36,9 +36,9 @@
             return newTag;
         }
 
-        public IEnumerable<T> GetAll<T>() => throw new System.NotImplementedException();
+        public IEnumerable<T> GetAll<T>() => this.tagRepository.AllAsNoTracking().To<T>().ToList();
 
-        public IEnumerable<T> GetAllNames<T>() => throw new System.NotImplementedException();
+        public IEnumerable<string> GetAllNames() => this.tagRepository.AllAsNoTracking().Select(x => x.BulgarianName).ToList();
 
         public int GetCount() => throw new System.NotImplementedException();
 

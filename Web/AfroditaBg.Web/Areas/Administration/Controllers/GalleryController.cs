@@ -9,15 +9,22 @@
     public class GalleryController : AdministrationController
     {
         private readonly IImagesService imagesService;
+        private readonly ITagsService tagsService;
 
-        public GalleryController(IImagesService imagesService)
+        public GalleryController(IImagesService imagesService, ITagsService tagsService)
         {
             this.imagesService = imagesService;
+            this.tagsService = tagsService;
         }
 
         public IActionResult Add()
         {
-            return this.View();
+            var tags = this.tagsService.GetAllNames();
+            var viewModel = new GalleryInputViewModel
+            {
+                Tags = tags,
+            };
+            return this.View(viewModel);
         }
 
         [HttpPost]

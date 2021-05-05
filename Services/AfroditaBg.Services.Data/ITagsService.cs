@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
+
     using AfroditaBg.Data.Models;
 
     public interface ITagsService
@@ -10,7 +11,7 @@
 
         IEnumerable<T> GetAll<T>();
 
-        IEnumerable<T> GetAllNames<T>();
+        IEnumerable<string> GetAllNames();
 
         Task<Tag> AddNewTagAsync(string bulgarianName, string englishName);
 

@@ -2,6 +2,7 @@
 @inject IViewLocalizer Localizer
 @{
     this.ViewData["Title"] = "Admin dashboard";
+    var allTags = this.Model.Tags.Select(x => new SelectListItem(x,x));
 }
 
 @model AfroditaBg.Web.ViewModels.Administration.Gallery.GalleryInputViewModel
@@ -14,27 +15,21 @@
         </div>
     </div>
     <div class="form-row">
-        <div class="form-group col-12">
-            <input asp-for="BulgarianTag" class="form-control" placeholder=@Localizer["Тагове на Български (раздели със запетая, ако са няколко)"]>
-            <span asp-validation-for="BulgarianTag" class="text-danger"></span>
+        <div class="form-group col-6">
+            <select asp-for="SelectTag" class="form-control" asp-items="@allTags">
+                <option value="new">Изберете таг или добавете нов -></option>
+            </select>
+            <span asp-validation-for="SelectTag" class="text-danger"></span>
+        </div>
+        <div class="form-group col-6">
+            <input asp-for="NewTag" class="form-control" />
+            <span asp-validation-for="NewTag" class="text-danger"></span>
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-12">
-            <input asp-for="EnglishTag" class="form-control" placeholder=@Localizer["Тагове на Английски (раздели със запетая, ако са няколко)"]>
-            <span asp-validation-for="EnglishTag" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col-12">
-            <input asp-for="BulgarianDescription" class="form-control" placeholder=@Localizer["Кратко описание на Български"]>
+            <input asp-for="BulgarianDescription" class="form-control" placeholder=@Localizer["Кратко описание"]>
             <span asp-validation-for="BulgarianDescription" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col-12">
-            <input asp-for="EnglishDescription" class="form-control" placeholder=@Localizer["Кратко описание на Английски"]>
-            <span asp-validation-for="EnglishDescription" class="text-danger"></span>
         </div>
     </div>
     <div class="form-row">

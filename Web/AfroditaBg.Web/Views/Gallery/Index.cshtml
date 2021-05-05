@@ -18,15 +18,14 @@
                 {
                     <h2 class="mb-4">@Localizer["Тук може да разгледате моята работа"]</h2>
                 }
-                <p class="work-category">
-                    <span class="px-2"><a href="#" class="active">All</a></span>
-                    <span class="px-2"><a href="#">Make Up</a></span>
-                    <span class="px-2"><a href="#">Massage</a></span>
-                    <span class="px-2"><a href="#">Facial</a></span>
-                    <span class="px-2"><a href="#">Spa</a></span>
-                    <span class="px-2"><a href="#">Hair</a></span>
-                    <span class="px-2"><a href="#">Nail</a></span>
-                </p>
+            <p class="work-category">
+                <span class="px-2"><a class="text-capitalize @(Model.Page.CurrTag == "all" ? "active text-primary" : "")" href="/Gallery?page=1&tag=all">Всички</a></span>
+                @foreach (var tag in Model.Tags)
+                {
+                    var active = tag == Model.Page.CurrTag ? "active text-primary" : "";
+                    <span class="px-2"><a class="text-capitalize @active" href="/Gallery?page=1&tag=@tag">@tag</a></span>
+                }
+            </p>
             </div>
         </div>
         <div class="row">
