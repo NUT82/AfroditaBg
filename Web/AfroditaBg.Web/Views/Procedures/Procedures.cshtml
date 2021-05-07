@@ -11,7 +11,10 @@
         <div class="row d-flex">
             <div class="col-md-6 pl-md-5 ftco-animate">
                 <h2 class="mb-4">@Localizer[Model.BulgarianName]</h2>
-                <p>@Localizer[Model.BulgarianDescription]</p>
+                @foreach (var row in Model.BulgarianDescriptionByRows)
+                {
+                    <p>@Localizer[row]</p>
+                }
             </div>
             <div class="col-md-6 d-flex ftco-animate">
                 <div class="img img-about align-self-stretch" style="background-image: url(@Model.ImagePath); width: 100%;"></div>

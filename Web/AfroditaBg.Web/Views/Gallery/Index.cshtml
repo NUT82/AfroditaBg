@@ -57,7 +57,7 @@
             <div class="col text-center">
                 <div class="block-27">
                     <ul>
-                        <li><a @(Model.Page.HasPrevPage ? ($"href=/Gallery?page={Model.Page.CurrPage - 1}") : null)>&lt;</a></li>
+                        <li><a @(Model.Page.HasPrevPage ? ($"href=/Gallery?page={Model.Page.CurrPage - 1}&tag={Model.Page.CurrTag}") : null)>&lt;</a></li>
                         @for (int i = Math.Max(Math.Min(Model.Page.TotalPages, Math.Max(Model.Page.CurrPage - 2, 1) + 4) - 4, 1); i <= Math.Min(Model.Page.TotalPages, Math.Max(Model.Page.CurrPage - 2, 1) + 4); i++)
                         {
                             if (Model.Page.CurrPage == i)
@@ -66,10 +66,10 @@
                             }
                             else
                             {
-                                <li><a href="/Gallery?page=@i">@i</a></li>
+                                <li><a href="/Gallery?page=@i&tag=@Model.Page.CurrTag">@i</a></li>
                             }
                         }
-                        <li><a @(Model.Page.HasNextPage ? ($"href=/Gallery?page={Model.Page.CurrPage + 1}") : null)>&gt;</a></li>
+                        <li><a @(Model.Page.HasNextPage ? ($"href=/Gallery?page={Model.Page.CurrPage + 1}&tag={Model.Page.CurrTag}") : null)>&gt;</a></li>
                     </ul>
                 </div>
             </div>

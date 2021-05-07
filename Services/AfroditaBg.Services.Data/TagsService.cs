@@ -42,6 +42,8 @@
 
         public int GetCount() => throw new System.NotImplementedException();
 
+        public Tag GetTagByName(string bulgarianName) => this.tagRepository.AllAsNoTracking().Where(x => x.BulgarianName == bulgarianName).FirstOrDefault();
+
         public Task RemoveTagAsync(int id) => throw new System.NotImplementedException();
     }
 }

@@ -71,7 +71,7 @@
             }
             else
             {
-                var tag = new Tag { BulgarianName = viewModel.SelectTag, EnglishName = viewModel.SelectTag };
+                var tag = this.tagsService.GetTagByName(viewModel.SelectTag);
                 image.Tags.Add(tag);
             }
 

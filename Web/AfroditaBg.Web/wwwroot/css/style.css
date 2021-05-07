@@ -8004,7 +8004,9 @@ h1, h2, h3, h4, h5,
     border-color: #000; }
 
 textarea.form-control {
-  height: inherit !important; }
+  height: inherit !important;
+  white-space: pre-wrap;
+}
 
 .ftco-vh-100 {
   height: 100vh; }

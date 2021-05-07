@@ -23,15 +23,20 @@
                                 <input type="hidden" name="id" value="@procedure.Id" />
                             </form>
                         }
-                        <div class="img mb-2" style="background-image: url(@procedure.ThumbnailImagePath);"></div>
-                        <div class="info text-center">
-                            <h3><a asp-area="" asp-controller="Procedures" asp-action="@procedure.EnglishName">@Localizer[procedure.BulgarianName]</a></h3>
-                            <div class="text">
-                                <p>@Localizer[procedure.BulgarianDescription]</p>
+                        <a asp-area="" asp-controller="Procedures" asp-action="@procedure.EnglishName">
+                            <div class="img mb-2" style="background-image: url(@procedure.ThumbnailImagePath);"></div>
+                            <div class="info text-center">
+                                <h3>
+                                    @Localizer[procedure.BulgarianName]
+                                </h3>
+                                <div class="text">
+                                    <p class="text-dark">@Localizer[procedure.BulgarianDescriptionShort]</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
+
             }
             @if (User.IsInRole(GlobalConstants.AdministratorRoleName))
             {

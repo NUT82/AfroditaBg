@@ -16,5 +16,7 @@
         Task<Tag> AddNewTagAsync(string bulgarianName, string englishName);
 
         Task RemoveTagAsync(int id);
+
+        Tag GetTagByName(string bulgarianName);
     }
 }

@@ -13,6 +13,8 @@
 
         public string BulgarianDescription { get; set; }
 
+        public string BulgarianDescriptionShort => this.BulgarianDescription.Substring(0, 180) + "...";
+
         public string ThumbnailImageId { get; set; }
 
         public string ThumbnailImagePath => $"/images/procedures/{this.ThumbnailImageId}.png";
