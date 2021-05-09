@@ -79,6 +79,8 @@
             services.AddTransient<ILinksService, LinksService>();
             services.AddTransient<IImagesService, ImagesService>();
             services.AddTransient<ITagsService, TagsService>();
+            services.AddTransient<ICategoriesService, CategoriesService>();
+            services.AddTransient<IBlogsService, BlogsService>();
 
             services.Configure<RequestLocalizationOptions>(options =>
             {

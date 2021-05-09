@@ -47,6 +47,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\images\links\" />
+    <Folder Include="wwwroot\images\blog\" />
     <Folder Include="wwwroot\images\procedures\" />
   </ItemGroup>
 </Project>

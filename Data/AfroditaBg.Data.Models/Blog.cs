@@ -7,6 +7,12 @@
 
     public class Blog : BaseDeletableModel<int>
     {
+        public Blog()
+        {
+            this.Images = new HashSet<Image>();
+            this.Comments = new HashSet<Comment>();
+        }
+
         [Required]
         public string UserId { get; set; }
 
@@ -24,8 +30,8 @@
         public Category Category { get; set; }
 
         [Required]
-        public IEnumerable<Image> Images { get; set; }
+        public ICollection<Image> Images { get; set; }
 
-        public IEnumerable<Comment> Comments { get; set; }
+        public ICollection<Comment> Comments { get; set; }
     }
 }

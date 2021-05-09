@@ -39,8 +39,8 @@
 
         public async Task AddNewProcedureAsync(ProcedureInputViewModel viewModel)
         {
-            var thumbnailImageId = await this.imagesService.AddNewImageAsync(viewModel.ThumbnailImage, $"{this.environment.ContentRootPath}/wwwroot/images/procedures/", ".png");
-            var imageId = await this.imagesService.AddNewImageAsync(viewModel.Image, $"{this.environment.ContentRootPath}/wwwroot/images/procedures/");
+            var thumbnailImage = await this.imagesService.AddNewImageAsync(viewModel.ThumbnailImage, $"{this.environment.ContentRootPath}/wwwroot/images/procedures/", ".png");
+            var image = await this.imagesService.AddNewImageAsync(viewModel.Image, $"{this.environment.ContentRootPath}/wwwroot/images/procedures/");
 
             var procedure = new Procedure
             {
@@ -48,8 +48,8 @@
                 BulgarianDescription = viewModel.BulgarianDescription,
                 EnglishName = viewModel.EnglishName,
                 EnglishDescription = viewModel.EnglishDescription,
-                ImageId = imageId,
-                ThumbnailImageId = thumbnailImageId,
+                Image = image,
+                ThumbnailImage = thumbnailImage,
             };
 
             await this.proceduresRepository.AddAsync(procedure);

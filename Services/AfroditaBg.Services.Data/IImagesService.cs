@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
+    using AfroditaBg.Data.Models;
     using AfroditaBg.Web.ViewModels.Administration.Gallery;
     using Microsoft.AspNetCore.Http;
 
@@ -12,7 +13,7 @@
 
         public int GetCountAllImagesInGallery();
 
-        Task<string> AddNewImageAsync(IFormFile image, string imagePath, params string[] allowedExtensions);
+        Task<Image> AddNewImageAsync(IFormFile image, string imagePath, params string[] allowedExtensions);
 
         Task AddNewImageToGalleryAsync(GalleryInputViewModel viewModel);
 

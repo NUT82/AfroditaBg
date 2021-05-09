@@ -27,7 +27,7 @@
             this.environment = environment;
         }
 
-        public async Task<string> AddNewImageAsync(IFormFile image, string imagePath, params string[] allowedExtensions)
+        public async Task<Image> AddNewImageAsync(IFormFile image, string imagePath, params string[] allowedExtensions)
         {
             if (allowedExtensions.Length == 0)
             {
@@ -53,13 +53,12 @@
             var physicalPath = $"{imagePath}{dbImage.Id}{extension}";
             using Stream fileStream = new FileStream(physicalPath, FileMode.Create);
             await image.CopyToAsync(fileStream);
-            return dbImage.Id;
+            return dbImage;
         }
 
         public async Task AddNewImageToGalleryAsync(GalleryInputViewModel viewModel)
         {
-            var imageId = await this.AddNewImageAsync(viewModel.Image, $"{this.environment.ContentRootPath}/wwwroot/images/gallery/");
-            var image = this.imageRepository.All().Where(x => x.Id == imageId).FirstOrDefault();
+            var image = await this.AddNewImageAsync(viewModel.Image, $"{this.environment.ContentRootPath}/wwwroot/images/gallery/");
 
             if (viewModel.SelectTag == "new")
             {

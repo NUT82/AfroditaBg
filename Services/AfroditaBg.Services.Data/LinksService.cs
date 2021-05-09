@@ -35,7 +35,7 @@
 
         public async Task AddNewLinkAsync(LinkInputViewModel viewModel)
         {
-            var imageId = await this.imagesService.AddNewImageAsync(viewModel.Image, $"{this.environment.ContentRootPath}/wwwroot/images/links/");
+            var image = await this.imagesService.AddNewImageAsync(viewModel.Image, $"{this.environment.ContentRootPath}/wwwroot/images/links/");
 
             var link = new Link
             {
@@ -44,7 +44,7 @@
                 BulgarianDescription = viewModel.BulgarianDescription,
                 EnglishDescription = viewModel.EnglishDescription,
                 Url = viewModel.Url,
-                ImageId = imageId,
+                Image = image,
             };
 
             await this.linksRepository.AddAsync(link);

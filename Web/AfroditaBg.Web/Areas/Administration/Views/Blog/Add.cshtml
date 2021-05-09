@@ -1,0 +1,50 @@
+﻿@using AfroditaBg.Common
+@inject IViewLocalizer Localizer
+@{
+    this.ViewData["Title"] = "Admin dashboard";
+    var allCategories = this.Model.Categories.Select(x => new SelectListItem(x,x));
+}
+
+@model AfroditaBg.Web.ViewModels.Administration.Blog.BlogInputViewModel
+<form enctype="multipart/form-data" class="ftco-animate" method="post">
+    <div class="form-row">
+        <div class="form-group col-12">
+            <input asp-for="BulgarianTitle" class="form-control" placeholder=@Localizer["Заглавие"]>
+            <span asp-validation-for="BulgarianTitle" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-12">
+            <textarea asp-for="BulgarianDescription" rows="4" class="form-control" placeholder=@Localizer["Описание"]></textarea>
+            <span asp-validation-for="BulgarianDescription" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-6">
+            <select asp-for="SelectCategory" class="form-control" asp-items="@allCategories">
+                <option value="new">Изберете категория или добавете нова -></option>
+            </select>
+            <span asp-validation-for="SelectCategory" class="text-danger"></span>
+        </div>
+        <div class="form-group col-6">
+            <input asp-for="NewCategory" class="form-control" />
+            <span asp-validation-for="NewCategory" class="text-danger"></span>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-auto">
+                <label asp-for="Images">Избери снимки</label>
+                <input asp-for="Images" class="form-control-file">
+                <span asp-validation-for="Images" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col text-center">
+            <input type="submit" value="@Localizer["Добави"]" class="btn btn-primary py-3 px-5">
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

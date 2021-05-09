@@ -1,9 +1,10 @@
-﻿using AfroditaBg.Data.Models;
-using AfroditaBg.Services.Mapping;
-using System.Linq;
-
-namespace AfroditaBg.Web.ViewModels.Links
+﻿namespace AfroditaBg.Web.ViewModels.Links
 {
+    using System.Linq;
+
+    using AfroditaBg.Data.Models;
+    using AfroditaBg.Services.Mapping;
+
     public class LinkViewModel : IMapFrom<Link>
     {
         public string BulgarianTitle { get; set; }
